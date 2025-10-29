@@ -49,7 +49,19 @@ pub mod er_state_account {
 
     pub fn close(ctx: Context<CloseUser>) -> Result<()> {
         ctx.accounts.close()?;
-        
+
+        Ok(())
+    }
+
+    pub fn request_vrf_random(ctx: Context<RequestVrfRandom>, seed: u8) -> Result<()> {
+        ctx.accounts.request_vrf_random(seed)?;
+
+        Ok(())
+    }
+
+    pub fn vrf_callback(ctx: Context<VrfCallback>, randomness: [u8; 32]) -> Result<()> {
+        ctx.accounts.vrf_callback(randomness)?;
+
         Ok(())
     }
 }
